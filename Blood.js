@@ -24,6 +24,7 @@ window.onload=function() {
         crushBloody();
         slideBloody();
         bloodyGenerator();
+        incrementAndToggleKey();
     },100)
 }
 
@@ -184,7 +185,7 @@ function checkValid(){
             let bloody1= board[r][c];
             let bloody2= board[r+1][c];
             let bloody3= board[r+2][c];
-            if ((bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank"))|| bloodyCompatibility(bloody1,bloody2,bloody3)){
+            if (bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank")){
                 return true;
             }
 
@@ -193,34 +194,7 @@ function checkValid(){
     return false;
 }
 
-function bloodyCompatibility(bloody1,bloody2,bloody3){
-    switch(bloody1){
-        // "O-" can donate for all groups
-        case "images/O-.png":
-            return (bloodies.includes(bloody2) && bloodies.includes(bloody3));
-        // "O+" can donate for posetive groups 
-        case "images/O+.png":
-            return (OplusGroup.includes(bloody2) && OplusGroup.includes(bloody3));
-        // "A+" can donate for himself and "AB+"
-        case "images/A+.png":
-            return (AplusGroup.includes(bloody2) && AplusGroup.includes(bloody3));
-        // "A-" can donate for himself,"A+","AB-" and "AB+"
-        case "images/A-.png":
-            return (A_Group.includes(bloody2) && A_Group.includes(bloody3));
-        // "B+" can donate for himself and "AB+"
-        case "images/B+.png":
-            return (BplusGroup.includes(bloody2) && BplusGroup.includes(bloody3));
-        // "B-" can donate for himself ,"B+" ,"AB-"and "AB+"
-        case "images/B-.png":
-            return (B_Group.includes(bloody2) && B_Group.includes(bloody3));
-        // "AB-" can donate for himself and "AB+"
-        case "images/AB-.png":
-            return (AB_Group.includes(bloody2) && AB_Group.includes(bloody3));
-        
 
-        
-    }
-}
 
 
 function slideBloody(){
@@ -248,3 +222,60 @@ function bloodyGenerator(){
         }
     }
 }
+
+
+function bloodyCompatibility(){
+    for(let c=0;c<columns;c++){
+        for(let r=0;r<rows-2;r++){
+            let bloody1= board[r][c];
+            let bloody2= board[r+1][c];
+            let bloody3= board[r+2][c];
+            switch(bloody1){
+                // "O-" can donate for all groups
+                case "images/O-.png":
+                    return (bloodies.includes(bloody2) && bloodies.includes(bloody3));
+                // "O+" can donate for posetive groups 
+                case "images/O+.png":
+                    return (OplusGroup.includes(bloody2) && OplusGroup.includes(bloody3));
+                // "A+" can donate for himself and "AB+"
+                case "images/A+.png":
+                    return (AplusGroup.includes(bloody2) && AplusGroup.includes(bloody3));
+                // "A-" can donate for himself,"A+","AB-" and "AB+"
+                case "images/A-.png":
+                    return (A_Group.includes(bloody2) && A_Group.includes(bloody3));
+                // "B+" can donate for himself and "AB+"
+                case "images/B+.png":
+                    return (BplusGroup.includes(bloody2) && BplusGroup.includes(bloody3));
+                // "B-" can donate for himself ,"B+" ,"AB-"and "AB+"
+                case "images/B-.png":
+                    return (B_Group.includes(bloody2) && B_Group.includes(bloody3));
+                // "AB-" can donate for himself and "AB+"
+                case "images/AB-.png":
+                    return (AB_Group.includes(bloody2) && AB_Group.includes(bloody3));
+                
+
+                
+            }
+        }
+    }
+}
+
+function incrementAndToggleKey() {
+    if (bloodyCompatibility()) {
+      numberOfKeys++;
+      
+      // Création d'un élément clé
+      const keyElement = document.createElement("div");
+      keyElement.className = "key";
+      keyElement.textContent = `Clé ${numberOfKeys}`;
+      
+      // Ajout de l'élément clé au corps du document
+      document.body.appendChild(keyElement);
+      
+      // Masquer l'élément clé après un court délai
+      setTimeout(() => {
+        keyElement.style.display = "none";
+      }, 1000); // 1000 millisecondes (1 seconde) ici, ajustez selon vos besoins
+    }
+  }
+  

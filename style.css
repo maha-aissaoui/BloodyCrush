@@ -28,7 +28,12 @@ body{
     
 }
 
-#ma-cle {
-    display: none;
-
-}
+#key {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    background-color: gold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
