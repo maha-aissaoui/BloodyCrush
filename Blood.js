@@ -1,7 +1,7 @@
 var bloodies =["A-", "A+", "AB-", "AB+", "B-", "B+", "O+", "O-"];
 var board = [];
-var rows=9;
-var columns=9;
+var rows=7;
+var columns=7;
 var score =0;
 
 var currTile;
