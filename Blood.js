@@ -155,7 +155,7 @@ function crushThree(){
             let bloody1= board[r][c];
             let bloody2= board[r+1][c];
             let bloody3= board[r+2][c];
-            if (bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank")){
+            if (bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank")|| bloodyCompatibility(bloody1,bloody2,bloody3)){
                 bloody1.src="image/blank.png";
                 bloody2.src="image/blank.png";
                 bloody3.src="image/blank.png";
@@ -171,7 +171,7 @@ function checkValid(){
             let bloody1= board[r][c];
             let bloody2= board[r][c+1];
             let bloody3= board[r][c+2];
-            if ((bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank"))|| bloodyCompatibility(bloody1,bloody2,bloody3)){
+            if ((bloody1.src==bloody2.src && bloody2.src==bloody3.src && !bloody1.src.includes("blank"))){
                 return true;
             }
 
