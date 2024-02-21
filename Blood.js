@@ -261,21 +261,14 @@ function bloodyCompatibility(){
 }
 
 function incrementAndToggleKey() {
+    //when he find a compatible goup he will win a key 
     if (bloodyCompatibility()) {
       numberOfKeys++;
-      
-      // Création d'un élément clé
-      const keyElement = document.createElement("div");
-      keyElement.className = "key";
-      keyElement.textContent = `Clé ${numberOfKeys}`;
-      
-      // Ajout de l'élément clé au corps du document
-      document.body.appendChild(keyElement);
-      
-      // Masquer l'élément clé après un court délai
+      document.getElementById("keys").innerText = keys_number.append(keyElement);
       setTimeout(() => {
         keyElement.style.display = "none";
-      }, 1000); // 1000 millisecondes (1 seconde) ici, ajustez selon vos besoins
+      }, 1000);
     }
   }
   
+// after every 5 keys collected he will get a blood information to improve his knowlege 
