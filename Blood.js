@@ -160,6 +160,8 @@ function crushThree(){
                 bloody1.src="image/blank.png";
                 bloody2.src="image/blank.png";
                 bloody3.src="image/blank.png";
+                score+=30;
+
             }
 
         }
@@ -263,7 +265,7 @@ function bloodyCompatibility(){
 function incrementAndToggleKey() {
     //when he find a compatible goup he will win a key 
     if (bloodyCompatibility()) {
-      numberOfKeys++;
+      numberOfKeys+=2;
       document.getElementById("keys").innerText = keys_number.append(keyElement);
       setTimeout(() => {
         keyElement.style.display = "none";
