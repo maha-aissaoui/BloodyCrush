@@ -161,7 +161,6 @@ function crushThree(){
                 bloody2.src="image/blank.png";
                 bloody3.src="image/blank.png";
                 score+=30;
-
             }
 
         }
